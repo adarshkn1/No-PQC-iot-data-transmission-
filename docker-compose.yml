@@ -1,0 +1,11 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: rabbitmq_wireshark_demo
+    ports:
+      - "5672:5672"    # AMQP protocol port (unencrypted - raw data visible in Wireshark)
+      - "15672:15672"  # RabbitMQ Management Dashboard
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    restart: unless-stopped
